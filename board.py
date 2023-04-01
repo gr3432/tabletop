@@ -2,8 +2,12 @@ class Board:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.pawns = []
 
-    def print(self, pawn):
+    def add_pawn(self, pawn):
+        self.pawns.append(pawn)
+
+    def print(self):
         print_board_x = 2 * self.x + 1
         print_board_y = 2 * self.y + 1
 
@@ -19,8 +23,10 @@ class Board:
                     if j%2==0:
                         print("|", end='')
                     else:
-                        if i == 2 * pawn.x + 1 and j == 2 * pawn.y + 1:
-                            print("o", end='')
+                        for pawn in self.pawns:
+                            if i == 2 * pawn.x + 1 and j == 2 * pawn.y + 1:
+                                print("o", end='')
+                                break
                         else:
                             print(" ", end='')
             print() # new line
