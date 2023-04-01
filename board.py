@@ -5,6 +5,8 @@ class Board:
         self.pawns = []
 
     def add_pawn(self, pawn):
+        if not(0 <= pawn.x < self.x and 0 <= pawn.y < self.y):
+            raise Exception("Pawn location is out of board bounds.")
         self.pawns.append(pawn)
 
     def print(self):
